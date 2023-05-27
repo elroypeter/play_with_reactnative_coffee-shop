@@ -111,7 +111,11 @@ const OnboardScreen = ({navigation}: any) => {
         source={require('../assets/onboard.jpg')}
         style={{flex: 1, justifyContent: 'center'}}>
         <SafeAreaView style={{flex: 1, backgroundColor: COLORS.backDrop}}>
-          <StatusBar barStyle="light-content" />
+          <StatusBar
+            translucent
+            barStyle="light-content"
+            backgroundColor={'transparent'}
+          />
           <View style={{flex: 1}}>
             <FlatList
               data={slides}
