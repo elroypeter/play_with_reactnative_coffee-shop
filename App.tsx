@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import OnboardScreen from './src/screens/onboardScreen';
-import HomeScreen from './src/screens/homeScreen';
+import OnboardScreen from './src/screens/OnboardScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createStackNavigator();
 
