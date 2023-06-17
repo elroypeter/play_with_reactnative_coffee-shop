@@ -28,7 +28,6 @@ export const ModalPopup = ({visible, children}: any) => {
         useNativeDriver: true,
       }).start();
     }
-    console.log(scaleValue);
   };
 
   return (
