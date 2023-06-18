@@ -5,4 +5,6 @@ export const COLORS = {
   white: '#FFFFFF',
   backDrop: '#00000054',
   faded: '#CBCBD4',
+  mashGrey: '#A6A6AA',
+  black: '#000000',
 };
