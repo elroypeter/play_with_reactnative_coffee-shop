@@ -6,10 +6,12 @@ import {
   ImageBackground,
   StatusBar,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import {COLORS} from '../constants/colors';
 import RatingStar from '../components/RatingStar';
 
+import IconBack from '../assets/icons/arrow_back.svg';
 import IconCoffee from '../assets/icons/coffee.svg';
 import IconChocolate from '../assets/icons/chocolate-bar.svg';
 import CoffeeBtn from '../components/CoffeeBtn';
@@ -28,6 +30,29 @@ const DetailsScreen = ({navigation, route}: any) => {
         <ImageBackground
           source={itemDetails.image}
           style={{flex: 1, width: '100%'}}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={{
+              width: 36,
+              height: 36,
+              marginTop: 50,
+              marginLeft: 20,
+              borderRadius: 18,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: COLORS.white,
+            }}
+            onPress={() => navigation.goBack()}>
+            <View>
+              <IconBack
+                style={{left: -2}}
+                height={22}
+                width={22}
+                fill={COLORS.primary}
+              />
+            </View>
+          </TouchableOpacity>
+
           <View style={[styles.headerTitle]}>
             <View
               style={{
