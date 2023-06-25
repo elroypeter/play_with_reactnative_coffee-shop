@@ -13,6 +13,7 @@ import IconHome from './src/assets/icons/home.svg';
 import IconHeart from './src/assets/icons/heart.svg';
 import IconCart from './src/assets/icons/cart.svg';
 import IconProfile from './src/assets/icons/person.svg';
+import DetailsScreen from './src/screens/DetailsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,6 +59,7 @@ const App = () => {
             <Stack.Screen component={OnboardScreen} name="onboardScreen" />
           )}
           <Stack.Screen component={TabNavigation} name="homeScreen" />
+          <Stack.Screen component={DetailsScreen} name="DetailsScreen" />
         </Stack.Navigator>
       </NavigationContainer>
     )

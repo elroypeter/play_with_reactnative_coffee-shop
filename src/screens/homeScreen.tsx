@@ -27,8 +27,9 @@ import {useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 import {coffees} from '../constants/coffees';
 import {generateBoxShadow} from '../utils/boxShadow';
+import RatingStar from '../components/RatingStar';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   const [currentCategory, setCurrentCategory] = useState(0);
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
@@ -132,7 +133,12 @@ const HomeScreen = () => {
             horizontal
             data={coffees}
             renderItem={({item, index}) => (
-              <CoffeeCard key={index} item={item} index={index} />
+              <CoffeeCard
+                key={index}
+                item={item}
+                index={index}
+                navigation={navigation}
+              />
             )}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{gap: 15, padding: 20}}
@@ -215,23 +221,18 @@ const Category = ({item, currentCategory, setCurrentCategory, index}: any) => {
   );
 };
 
-const CoffeeCard = ({item, index}: any) => {
+const CoffeeCard = ({item, navigation}: any) => {
   return (
-    <TouchableHighlight activeOpacity={0.8} underlayColor={COLORS.white}>
+    <TouchableHighlight
+      activeOpacity={0.8}
+      underlayColor={COLORS.white}
+      onPress={() => navigation.navigate('DetailsScreen', item)}>
       <View style={[styles.card, styles.cardShadow]}>
         <View>
-          <View style={[styles.rating]}>
-            <IconStar
-              style={{marginRight: 4}}
-              height={14}
-              width={14}
-              fill={COLORS.white}
-            />
-            <Text
-              style={{color: COLORS.light, fontSize: 12, fontWeight: '300'}}>
-              {item.rating}
-            </Text>
+          <View style={{position: 'absolute', right: 5, top: 5, zIndex: 1}}>
+            <RatingStar rating={item.rating} />
           </View>
+
           <Image
             style={{height: 129, width: 159, borderRadius: 15}}
             source={item.image}
@@ -301,18 +302,6 @@ const styles = StyleSheet.create({
   },
   cardShadow: {
     ...generateBoxShadow(2, 1, 10, 'rgba(0,0,0,0.25)', 7, 0.4),
-  },
-  rating: {
-    position: 'absolute',
-    right: 5,
-    top: 5,
-    zIndex: 1,
-    backgroundColor: COLORS.primary,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    borderRadius: 15,
   },
   specialCard: {
     flexDirection: 'row',
